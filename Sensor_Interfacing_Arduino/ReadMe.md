@@ -1,3 +1,7 @@
+### Sensor Interfacing on Arduino
+
+This folder contains the codes written in Arduino C++ to read sensor and image data and activate actuators in the green machine based on commands sent from the DE-10 Nano over Bluetooth.<br>
+
 ### Commands for requesting sensor data
 
 1.  Turn on LED
