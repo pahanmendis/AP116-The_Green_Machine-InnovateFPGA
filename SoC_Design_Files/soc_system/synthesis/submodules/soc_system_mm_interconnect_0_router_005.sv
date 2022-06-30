@@ -1,13 +1,13 @@
-// (C) 2001-2016 Altera Corporation. All rights reserved.
-// Your use of Altera Corporation's design tools, logic functions and other 
+// (C) 2001-2016 Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions and other 
 // software and tools, and its AMPP partner logic functions, and any output 
 // files any of the foregoing (including device programming or simulation 
 // files), and any associated documentation or information are expressly subject 
-// to the terms and conditions of the Altera Program License Subscription 
-// Agreement, Altera MegaCore Function License Agreement, or other applicable 
+// to the terms and conditions of the Intel Program License Subscription 
+// Agreement, Intel MegaCore Function License Agreement, or other applicable 
 // license agreement, including, without limitation, that your use is for the 
-// sole purpose of programming logic devices manufactured by Altera and sold by 
-// Altera or its authorized distributors.  Please refer to the applicable 
+// sole purpose of programming logic devices manufactured by Intel and sold by 
+// Intel or its authorized distributors.  Please refer to the applicable 
 // agreement for further details.
 
 
@@ -24,9 +24,9 @@
 // agreement for further details.
 
 
-// $Id: //acds/rel/16.0/ip/merlin/altera_merlin_router/altera_merlin_router.sv.terp#1 $
+// $Id: //acds/rel/16.1/ip/merlin/altera_merlin_router/altera_merlin_router.sv.terp#1 $
 // $Revision: #1 $
-// $Date: 2016/02/08 $
+// $Date: 2016/08/07 $
 // $Author: swbranch $
 
 // -------------------------------------------------------
@@ -47,7 +47,7 @@ module soc_system_mm_interconnect_0_router_005_default_decode
      parameter DEFAULT_CHANNEL = -1,
                DEFAULT_WR_CHANNEL = 0,
                DEFAULT_RD_CHANNEL = 1,
-               DEFAULT_DESTID = 1 
+               DEFAULT_DESTID = 0 
    )
   (output [140 - 138 : 0] default_destination_id,
    output [7-1 : 0] default_wr_channel,
@@ -192,15 +192,15 @@ module soc_system_mm_interconnect_0_router_005
 
 
 
-        if (destid == 1  && write_transaction) begin
+        if (destid == 0  && write_transaction) begin
             src_channel = 7'b001;
         end
 
-        if (destid == 1  && read_transaction) begin
+        if (destid == 0  && read_transaction) begin
             src_channel = 7'b010;
         end
 
-        if (destid == 0 ) begin
+        if (destid == 2 ) begin
             src_channel = 7'b100;
         end
 

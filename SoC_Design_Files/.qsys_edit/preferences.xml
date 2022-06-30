@@ -3,16 +3,11 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="127" />
+   <connections preferredWidth="175" />
    <irq preferredWidth="47" />
-   <name preferredWidth="219" />
-   <description preferredWidth="315" />
-   <export preferredWidth="152" />
-   <inputclock preferredWidth="159" />
   </columns>
  </systemtable>
  <library
-   expandedCategories="Library/University Program,Project,Library,Library/University Program/Communications,Library/Interface Protocols/Serial,Library/Interface Protocols" />
- <window width="3851" height="2008" x="0" y="0" />
- <hdlexample language="VERILOG" />
+   expandedCategories="Library/Interface Protocols,Library,Library/Interface Protocols/Serial,Project,Library/University Program/Communications,Library/University Program" />
+ <window width="2469" height="2110" x="1378" y="0" />
 </preferences>

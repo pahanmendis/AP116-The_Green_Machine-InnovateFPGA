@@ -44,26 +44,26 @@
 
 module soc_system_mm_interconnect_0_router_002_default_decode
   #(
-     parameter DEFAULT_CHANNEL = -1,
-               DEFAULT_WR_CHANNEL = 0,
-               DEFAULT_RD_CHANNEL = 1,
-               DEFAULT_DESTID = 0 
+     parameter DEFAULT_CHANNEL = 1,
+               DEFAULT_WR_CHANNEL = -1,
+               DEFAULT_RD_CHANNEL = -1,
+               DEFAULT_DESTID = 1 
    )
-  (output [91 - 89 : 0] default_destination_id,
-   output [5-1 : 0] default_wr_channel,
-   output [5-1 : 0] default_rd_channel,
-   output [5-1 : 0] default_src_channel
+  (output [104 - 102 : 0] default_destination_id,
+   output [7-1 : 0] default_wr_channel,
+   output [7-1 : 0] default_rd_channel,
+   output [7-1 : 0] default_src_channel
   );
 
   assign default_destination_id = 
-    DEFAULT_DESTID[91 - 89 : 0];
+    DEFAULT_DESTID[104 - 102 : 0];
 
   generate
     if (DEFAULT_CHANNEL == -1) begin : no_default_channel_assignment
       assign default_src_channel = '0;
     end
     else begin : default_channel_assignment
-      assign default_src_channel = 5'b1 << DEFAULT_CHANNEL;
+      assign default_src_channel = 7'b1 << DEFAULT_CHANNEL;
     end
   endgenerate
 
@@ -73,8 +73,8 @@ module soc_system_mm_interconnect_0_router_002_default_decode
       assign default_rd_channel = '0;
     end
     else begin : default_rw_channel_assignment
-      assign default_wr_channel = 5'b1 << DEFAULT_WR_CHANNEL;
-      assign default_rd_channel = 5'b1 << DEFAULT_RD_CHANNEL;
+      assign default_wr_channel = 7'b1 << DEFAULT_WR_CHANNEL;
+      assign default_rd_channel = 7'b1 << DEFAULT_RD_CHANNEL;
     end
   endgenerate
 
@@ -93,7 +93,7 @@ module soc_system_mm_interconnect_0_router_002
     // Command Sink (Input)
     // -------------------
     input                       sink_valid,
-    input  [116-1 : 0]    sink_data,
+    input  [129-1 : 0]    sink_data,
     input                       sink_startofpacket,
     input                       sink_endofpacket,
     output                      sink_ready,
@@ -102,8 +102,8 @@ module soc_system_mm_interconnect_0_router_002
     // Command Source (Output)
     // -------------------
     output                          src_valid,
-    output reg [116-1    : 0] src_data,
-    output reg [5-1 : 0] src_channel,
+    output reg [129-1    : 0] src_data,
+    output reg [7-1 : 0] src_channel,
     output                          src_startofpacket,
     output                          src_endofpacket,
     input                           src_ready
@@ -112,18 +112,18 @@ module soc_system_mm_interconnect_0_router_002
     // -------------------------------------------------------
     // Local parameters and variables
     // -------------------------------------------------------
-    localparam PKT_ADDR_H = 56;
+    localparam PKT_ADDR_H = 67;
     localparam PKT_ADDR_L = 36;
-    localparam PKT_DEST_ID_H = 91;
-    localparam PKT_DEST_ID_L = 89;
-    localparam PKT_PROTECTION_H = 106;
-    localparam PKT_PROTECTION_L = 104;
-    localparam ST_DATA_W = 116;
-    localparam ST_CHANNEL_W = 5;
-    localparam DECODER_TYPE = 1;
+    localparam PKT_DEST_ID_H = 104;
+    localparam PKT_DEST_ID_L = 102;
+    localparam PKT_PROTECTION_H = 119;
+    localparam PKT_PROTECTION_L = 117;
+    localparam ST_DATA_W = 129;
+    localparam ST_CHANNEL_W = 7;
+    localparam DECODER_TYPE = 0;
 
-    localparam PKT_TRANS_WRITE = 59;
-    localparam PKT_TRANS_READ  = 60;
+    localparam PKT_TRANS_WRITE = 70;
+    localparam PKT_TRANS_READ  = 71;
 
     localparam PKT_ADDR_W = PKT_ADDR_H-PKT_ADDR_L + 1;
     localparam PKT_DEST_ID_W = PKT_DEST_ID_H-PKT_DEST_ID_L + 1;
@@ -134,22 +134,32 @@ module soc_system_mm_interconnect_0_router_002
     // Figure out the number of bits to mask off for each slave span
     // during address decoding
     // -------------------------------------------------------
+    localparam PAD0 = log2ceil(64'h10000 - 64'h0); 
+    localparam PAD1 = log2ceil(64'h10010 - 64'h10000); 
+    localparam PAD2 = log2ceil(64'h10020 - 64'h10010); 
+    localparam PAD3 = log2ceil(64'h10030 - 64'h10020); 
+    localparam PAD4 = log2ceil(64'h10038 - 64'h10030); 
     // -------------------------------------------------------
     // Work out which address bits are significant based on the
     // address range of the slaves. If the required width is too
     // large or too small, we use the address field width instead.
     // -------------------------------------------------------
-    localparam ADDR_RANGE = 64'h0;
+    localparam ADDR_RANGE = 64'h10038;
     localparam RANGE_ADDR_WIDTH = log2ceil(ADDR_RANGE);
     localparam OPTIMIZED_ADDR_H = (RANGE_ADDR_WIDTH > PKT_ADDR_W) ||
                                   (RANGE_ADDR_WIDTH == 0) ?
                                         PKT_ADDR_H :
                                         PKT_ADDR_L + RANGE_ADDR_WIDTH - 1;
+    localparam ADDRESS_ALIASING_W = PKT_ADDR_H > OPTIMIZED_ADDR_H + 1 ? PKT_ADDR_H - OPTIMIZED_ADDR_H - 1 : 0;
 
-    localparam RG = RANGE_ADDR_WIDTH;
+    localparam RG = RANGE_ADDR_WIDTH-1;
     localparam REAL_ADDRESS_RANGE = OPTIMIZED_ADDR_H - PKT_ADDR_L;
 
-    reg [PKT_DEST_ID_W-1 : 0] destid;
+      reg [PKT_ADDR_W-1 : 0] address;
+      always @* begin
+        address = {PKT_ADDR_W{1'b0}};
+        address [REAL_ADDRESS_RANGE:0] = sink_data[OPTIMIZED_ADDR_H : PKT_ADDR_L];
+      end   
 
     // -------------------------------------------------------
     // Pass almost everything through, untouched
@@ -158,8 +168,8 @@ module soc_system_mm_interconnect_0_router_002
     assign src_valid         = sink_valid;
     assign src_startofpacket = sink_startofpacket;
     assign src_endofpacket   = sink_endofpacket;
-    wire [5-1 : 0] default_rd_channel;
-    wire [5-1 : 0] default_wr_channel;
+    wire [PKT_DEST_ID_W-1:0] default_destid;
+    wire [7-1 : 0] default_src_channel;
 
 
 
@@ -167,39 +177,63 @@ module soc_system_mm_interconnect_0_router_002
     // -------------------------------------------------------
     // Write and read transaction signals
     // -------------------------------------------------------
-    wire write_transaction;
-    assign write_transaction = sink_data[PKT_TRANS_WRITE];
     wire read_transaction;
     assign read_transaction  = sink_data[PKT_TRANS_READ];
 
 
     soc_system_mm_interconnect_0_router_002_default_decode the_default_decode(
-      .default_destination_id (),
-      .default_wr_channel   (default_wr_channel),
-      .default_rd_channel   (default_rd_channel),
-      .default_src_channel  ()
+      .default_destination_id (default_destid),
+      .default_wr_channel   (),
+      .default_rd_channel   (),
+      .default_src_channel  (default_src_channel)
     );
 
     always @* begin
         src_data    = sink_data;
-        src_channel = write_transaction ? default_wr_channel : default_rd_channel;
+        src_channel = default_src_channel;
+        src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = default_destid;
 
         // --------------------------------------------------
-        // DestinationID Decoder
-        // Sets the channel based on the destination ID.
+        // Addresss aliasing will be routed to default slave (if present)
         // --------------------------------------------------
-        destid      = sink_data[PKT_DEST_ID_H : PKT_DEST_ID_L];
+        if ( PKT_ADDR_H == OPTIMIZED_ADDR_H || 
+             (|sink_data[PKT_ADDR_H:PKT_ADDR_H - ADDRESS_ALIASING_W] == 0) ) begin
 
+        // --------------------------------------------------
+        // Address Decoder
+        // Sets the channel and destination ID based on the address
+        // --------------------------------------------------
 
+    // ( 0x0 .. 0x10000 )
+    if ( {address[RG:PAD0],{PAD0{1'b0}}} == 17'h0   ) begin
+            src_channel = 7'b000001;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 3;
+    end
 
-        if (destid == 0  && write_transaction) begin
-            src_channel = 5'b01;
-        end
+    // ( 0x10000 .. 0x10010 )
+    if ( {address[RG:PAD1],{PAD1{1'b0}}} == 17'h10000   ) begin
+            src_channel = 7'b001000;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 2;
+    end
 
-        if (destid == 0  && read_transaction) begin
-            src_channel = 5'b10;
-        end
+    // ( 0x10010 .. 0x10020 )
+    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 17'h10010  && read_transaction  ) begin
+            src_channel = 7'b010000;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
+    end
 
+    // ( 0x10020 .. 0x10030 )
+    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 17'h10020  && read_transaction  ) begin
+            src_channel = 7'b100000;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 4;
+    end
+
+    // ( 0x10030 .. 0x10038 )
+    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 17'h10030  && read_transaction  ) begin
+            src_channel = 7'b000100;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 5;
+    end
+        end // end for if-else for memory aliasing decode
 
 end
 

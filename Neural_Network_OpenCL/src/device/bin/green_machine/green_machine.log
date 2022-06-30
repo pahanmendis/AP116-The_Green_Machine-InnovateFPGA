@@ -1,0 +1,106 @@
+Compiler Command: aoc green_machine.cl -o bin\green_machine.aocx -board=de10_nano_sharedonly -v -report
+c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl:9:18: warning: declaring kernel argument with no 'restrict' may lead to low kernel performance
+        __global float *input_im,
+                        ^
+c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl:209:18: warning: declaring kernel argument with no 'restrict' may lead to low kernel performance
+        __global float* input_im,
+                        ^
+c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl:210:24: warning: declaring kernel argument with no 'restrict' may lead to low kernel performance
+        __global const float* filter_weight,
+                              ^
+c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl:211:24: warning: declaring kernel argument with no 'restrict' may lead to low kernel performance
+        __global const float* filter_bias,
+                              ^
+c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl:259:18: warning: declaring kernel argument with no 'restrict' may lead to low kernel performance
+        __global float* input_im,
+                        ^
+c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl:260:24: warning: declaring kernel argument with no 'restrict' may lead to low kernel performance
+        __global const float* filter_weight,
+                              ^
+c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl:261:24: warning: declaring kernel argument with no 'restrict' may lead to low kernel performance
+        __global const float* filter_bias,
+                              ^
+7 warnings generated.
+Compiler Warning: Auto-unrolled loop at c:\Users\pahan\Downloads\AP116-The_Green_Machine-InnovateFPGA-main\AP116-The_Green_Machine-InnovateFPGA-main\Neural_Network_OpenCL\src\device/c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl:237
+
+!===========================================================================
+! The report below may be inaccurate. A more comprehensive           
+! resource usage report can be found at green_machine/reports/report.html    
+!===========================================================================
+
++--------------------------------------------------------------------+
+; Estimated Resource Usage Summary                                   ;
++----------------------------------------+---------------------------+
+; Resource                               + Usage                     ;
++----------------------------------------+---------------------------+
+; Logic utilization                      ;   70%                     ;
+; ALUTs                                  ;   47%                     ;
+; Dedicated logic registers              ;   28%                     ;
+; Memory blocks                          ;   72%                     ;
+; DSP blocks                             ;   38%                     ;
++----------------------------------------+---------------------------;
+System name: green_machine
+
+2022.06.28.19:34:40 Info: Doing: <b>qsys-script --quartus-project=top --script=system.tcl --Xmx512M --XX:+UseSerialGC --system-file=system.qsys</b>
+2022.06.28.19:35:17 Info: set_validation_property AUTOMATIC_VALIDATION false
+2022.06.28.19:35:17 Info: add_instance green_machine_system green_machine_system 
+2022.06.28.19:35:17 Info: add_connection acl_iface.kernel_clk green_machine_system.clock_reset
+2022.06.28.19:35:17 Info: add_connection acl_iface.kernel_clk2x green_machine_system.clock_reset2x
+2022.06.28.19:35:17 Error: add_connection acl_iface.kernel_clk2x green_machine_system.clock_reset2x: No interface named acl_iface.kernel_clk2x.
+2022.06.28.19:35:17 Info: add_connection acl_iface.kernel_reset green_machine_system.clock_reset_reset
+2022.06.28.19:35:17 Info: add_connection green_machine_system.avm_memgmem0_port_0_0_rw acl_iface.kernel_mem0
+2022.06.28.19:35:17 Info: add_connection acl_iface.kernel_irq green_machine_system.kernel_irq
+2022.06.28.19:35:17 Error: add_connection acl_iface.kernel_irq green_machine_system.kernel_irq: No interface named acl_iface.kernel_irq.
+2022.06.28.19:35:17 Info: add_instance cra_root cra_ring_root 
+2022.06.28.19:35:17 Info: set_instance_parameter_value cra_root ASYNC_RESET 1
+2022.06.28.19:35:17 Info: set_instance_parameter_value cra_root SYNCHRONIZE_RESET 0
+2022.06.28.19:35:17 Info: set_instance_parameter_value cra_root DATA_W 64
+2022.06.28.19:35:17 Info: set_instance_parameter_value cra_root ADDR_W 5
+2022.06.28.19:35:17 Info: set_instance_parameter_value cra_root ID_W 2
+2022.06.28.19:35:17 Info: add_connection acl_iface.kernel_clk cra_root.clock
+2022.06.28.19:35:17 Info: add_connection acl_iface.kernel_reset cra_root.reset
+2022.06.28.19:35:17 Info: add_connection acl_iface.kernel_cra cra_root.cra_slave
+2022.06.28.19:35:17 Error: add_connection acl_iface.kernel_cra cra_root.cra_slave: No interface named acl_iface.kernel_cra.
+2022.06.28.19:35:17 Info: set_connection_parameter_value acl_iface.kernel_cra/cra_root.cra_slave baseAddress 0x0
+2022.06.28.19:35:17 Error: set_connection_parameter_value acl_iface.kernel_cra/cra_root.cra_slave baseAddress 0x0: No interface named acl_iface.kernel_cra.
+2022.06.28.19:35:17 Info: add_instance avs_conv2d3x3_cra_cra_ring cra_ring_node 
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_conv2d3x3_cra_cra_ring ASYNC_RESET 1
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_conv2d3x3_cra_cra_ring SYNCHRONIZE_RESET 0
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_conv2d3x3_cra_cra_ring DATA_W 64
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_conv2d3x3_cra_cra_ring RING_ADDR_W 5
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_conv2d3x3_cra_cra_ring CRA_ADDR_W 5
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_conv2d3x3_cra_cra_ring ID_W 2
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_conv2d3x3_cra_cra_ring ID 0
+2022.06.28.19:35:17 Info: add_connection acl_iface.kernel_clk avs_conv2d3x3_cra_cra_ring.clock
+2022.06.28.19:35:17 Info: add_connection acl_iface.kernel_reset avs_conv2d3x3_cra_cra_ring.reset
+2022.06.28.19:35:17 Info: add_connection cra_root.ring_out avs_conv2d3x3_cra_cra_ring.ring_in
+2022.06.28.19:35:17 Info: add_connection avs_conv2d3x3_cra_cra_ring.cra_master green_machine_system.avs_conv2d3x3_cra
+2022.06.28.19:35:17 Info: set_connection_parameter_value avs_conv2d3x3_cra_cra_ring.cra_master/green_machine_system.avs_conv2d3x3_cra baseAddress 0x0
+2022.06.28.19:35:17 Info: add_instance avs_dense_cra_cra_ring cra_ring_node 
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_dense_cra_cra_ring ASYNC_RESET 1
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_dense_cra_cra_ring SYNCHRONIZE_RESET 0
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_dense_cra_cra_ring DATA_W 64
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_dense_cra_cra_ring RING_ADDR_W 5
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_dense_cra_cra_ring CRA_ADDR_W 5
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_dense_cra_cra_ring ID_W 2
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_dense_cra_cra_ring ID 1
+2022.06.28.19:35:17 Info: add_connection acl_iface.kernel_clk avs_dense_cra_cra_ring.clock
+2022.06.28.19:35:17 Info: add_connection acl_iface.kernel_reset avs_dense_cra_cra_ring.reset
+2022.06.28.19:35:17 Info: add_connection avs_conv2d3x3_cra_cra_ring.ring_out avs_dense_cra_cra_ring.ring_in
+2022.06.28.19:35:17 Info: add_connection avs_dense_cra_cra_ring.cra_master green_machine_system.avs_dense_cra
+2022.06.28.19:35:17 Info: set_connection_parameter_value avs_dense_cra_cra_ring.cra_master/green_machine_system.avs_dense_cra baseAddress 0x0
+2022.06.28.19:35:17 Info: add_instance avs_maxpool2d_cra_cra_ring cra_ring_node 
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_maxpool2d_cra_cra_ring ASYNC_RESET 1
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_maxpool2d_cra_cra_ring SYNCHRONIZE_RESET 0
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_maxpool2d_cra_cra_ring DATA_W 64
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_maxpool2d_cra_cra_ring RING_ADDR_W 5
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_maxpool2d_cra_cra_ring CRA_ADDR_W 5
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_maxpool2d_cra_cra_ring ID_W 2
+2022.06.28.19:35:17 Info: set_instance_parameter_value avs_maxpool2d_cra_cra_ring ID 2
+2022.06.28.19:35:17 Info: add_connection acl_iface.kernel_clk avs_maxpool2d_cra_cra_ring.clock
+2022.06.28.19:35:17 Info: add_connection acl_iface.kernel_reset avs_maxpool2d_cra_cra_ring.reset
+2022.06.28.19:35:17 Info: add_connection avs_dense_cra_cra_ring.ring_out avs_maxpool2d_cra_cra_ring.ring_in
+2022.06.28.19:35:17 Info: add_connection avs_maxpool2d_cra_cra_ring.cra_master green_machine_system.avs_maxpool2d_cra
+2022.06.28.19:35:17 Info: set_connection_parameter_value avs_maxpool2d_cra_cra_ring.cra_master/green_machine_system.avs_maxpool2d_cra baseAddress 0x0
+2022.06.28.19:35:17 Info: add_connection avs_maxpool2d_cra_cra_ring.ring_out cra_root.ring_in
+2022.06.28.19:35:17 Info: save_system 

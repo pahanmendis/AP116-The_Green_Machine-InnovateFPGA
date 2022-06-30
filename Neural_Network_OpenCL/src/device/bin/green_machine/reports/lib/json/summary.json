@@ -1,0 +1,291 @@
+{
+  "performanceSummary":
+  {
+    "name":"Kernel Summary"
+    , "columns":
+    ["Kernel Name", "Kernel Type", "Autorun", "Workgroup Size", "# Compute Units"]
+    , "children":
+    [
+      {
+        "name":"conv2d3x3"
+        , "data":
+        [
+          "NDRange"
+          , "No"
+          , "n/a"
+          , 1
+        ]
+        , "details":
+        [
+          {
+            "type":"text"
+            , "text":"Kernel type: NDRange"
+          }
+          , {
+            "type":"text"
+            , "text":"The kernel does not use any work-group information (such as get_local_id() or get_group_id()).Local work-group size will be automatically modified to match global work-group size on launch.This is a hardware optimization."
+          }
+        ]
+        , "debug":
+        [
+          [
+            {
+              "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+              , "line":214
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"dense"
+        , "data":
+        [
+          "NDRange"
+          , "No"
+          , "n/a"
+          , 1
+        ]
+        , "details":
+        [
+          {
+            "type":"text"
+            , "text":"Kernel type: NDRange"
+          }
+          , {
+            "type":"text"
+            , "text":"The kernel does not use any work-group information (such as get_local_id() or get_group_id()).Local work-group size will be automatically modified to match global work-group size on launch.This is a hardware optimization."
+          }
+        ]
+        , "debug":
+        [
+          [
+            {
+              "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+              , "line":264
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"maxpool2d"
+        , "data":
+        [
+          "NDRange"
+          , "No"
+          , "n/a"
+          , 1
+        ]
+        , "details":
+        [
+          {
+            "type":"text"
+            , "text":"Kernel type: NDRange"
+          }
+          , {
+            "type":"text"
+            , "text":"The kernel does not use any work-group information (such as get_local_id() or get_group_id()).Local work-group size will be automatically modified to match global work-group size on launch.This is a hardware optimization."
+          }
+        ]
+        , "debug":
+        [
+          [
+            {
+              "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+              , "line":11
+            }
+          ]
+        ]
+      }
+    ]
+  }
+  , "estimatedResources":
+  {
+    "name":"Estimated Resource Usage"
+    , "columns":
+    ["Kernel Name", "ALUTs ", "FFs  ", "RAMs ", "DSPs "]
+    , "children":
+    [
+      {
+        "name":"conv2d3x3"
+        , "data":
+        [35023, 34589, 209, 29]
+        , "debug":
+        [
+          [
+            {
+              "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+              , "line":214
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"dense"
+        , "data":
+        [8126, 12750, 100, 1]
+        , "debug":
+        [
+          [
+            {
+              "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+              , "line":264
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"maxpool2d"
+        , "data":
+        [5007, 7261, 29, 12]
+        , "debug":
+        [
+          [
+            {
+              "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+              , "line":11
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"Kernel Subtotal"
+        , "classes":
+        ["summary-highlight", "nohover"]
+        , "data":
+        [48156, 54600, 338, 42]
+      }
+      , {
+        "name":"Global Interconnect"
+        , "classes":
+        ["summary-highlight", "nohover"]
+        , "data":
+        [1396, 4462, 10, 0]
+      }
+      , {
+        "name":"Board Interface"
+        , "classes":
+        ["summary-highlight", "nohover"]
+        , "data":
+        [2160, 1908, 20, 0]
+      }
+      , {
+        "name":"Total"
+        , "classes":
+        ["summary-highlight", "nohover"]
+        , "data":
+        [51712, 60970, 368, 42]
+        , "data_percent":
+        [47.1945, 27.8219, 71.5953, 37.5]
+      }
+      , {
+        "name":"Available"
+        , "classes":
+        ["summary-highlight", "nohover"]
+        , "data":
+        [109572, 219144, 514, 112]
+      }
+    ]
+  }
+  , "compileWarnings":
+  {
+    "name":"Compile Warnings"
+    , "children":
+    [
+      {
+        "name":"Load uses a Burst-coalesced non-aligned cached LSU"
+        , "details":
+        [
+          {
+            "type":"text"
+            , "text":"Load with a private 64 kilobit cache. Cache is not shared with any other load. It is flushed on kernel start. Use Dynamic Profiler to verify cache effectiveness. Other kernels should not be updating the data in global memory while this kernel is using it. Cache is created when memory access pattern is data-dependent or appears to be repetitive. Simplify access pattern or mark pointer as 'volatile' to disable generation of this cache."
+          }
+        ]
+        , "debug":
+        [
+          [
+            {
+              "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+              , "line":242
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"Load uses a Burst-coalesced non-aligned cached LSU"
+        , "details":
+        [
+          {
+            "type":"text"
+            , "text":"Load with a private 64 kilobit cache. Cache is not shared with any other load. It is flushed on kernel start. Use Dynamic Profiler to verify cache effectiveness. Other kernels should not be updating the data in global memory while this kernel is using it. Cache is created when memory access pattern is data-dependent or appears to be repetitive. Simplify access pattern or mark pointer as 'volatile' to disable generation of this cache."
+          }
+        ]
+        , "debug":
+        [
+          [
+            {
+              "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+              , "line":242
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"Load uses a Burst-coalesced non-aligned cached LSU"
+        , "details":
+        [
+          {
+            "type":"text"
+            , "text":"Load with a private 64 kilobit cache. Cache is not shared with any other load. It is flushed on kernel start. Use Dynamic Profiler to verify cache effectiveness. Other kernels should not be updating the data in global memory while this kernel is using it. Cache is created when memory access pattern is data-dependent or appears to be repetitive. Simplify access pattern or mark pointer as 'volatile' to disable generation of this cache."
+          }
+        ]
+        , "debug":
+        [
+          [
+            {
+              "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+              , "line":242
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"Load uses a Burst-coalesced non-aligned cached LSU"
+        , "details":
+        [
+          {
+            "type":"text"
+            , "text":"Load with a private 64 kilobit cache. Cache is not shared with any other load. It is flushed on kernel start. Use Dynamic Profiler to verify cache effectiveness. Other kernels should not be updating the data in global memory while this kernel is using it. Cache is created when memory access pattern is data-dependent or appears to be repetitive. Simplify access pattern or mark pointer as 'volatile' to disable generation of this cache."
+          }
+        ]
+        , "debug":
+        [
+          [
+            {
+              "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+              , "line":242
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"Load uses a Burst-coalesced cached LSU"
+        , "details":
+        [
+          {
+            "type":"text"
+            , "text":"Load with a private 64 kilobit cache. Cache is not shared with any other load. It is flushed on kernel start. Use Dynamic Profiler to verify cache effectiveness. Other kernels should not be updating the data in global memory while this kernel is using it. Cache is created when memory access pattern is data-dependent or appears to be repetitive. Simplify access pattern or mark pointer as 'volatile' to disable generation of this cache."
+          }
+        ]
+        , "debug":
+        [
+          [
+            {
+              "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+              , "line":272
+            }
+          ]
+        ]
+      }
+    ]
+  }
+}

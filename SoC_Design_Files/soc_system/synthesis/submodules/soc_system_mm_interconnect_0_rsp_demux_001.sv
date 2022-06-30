@@ -1,19 +1,19 @@
-// (C) 2001-2016 Altera Corporation. All rights reserved.
-// Your use of Altera Corporation's design tools, logic functions and other 
+// (C) 2001-2016 Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions and other 
 // software and tools, and its AMPP partner logic functions, and any output 
 // files any of the foregoing (including device programming or simulation 
 // files), and any associated documentation or information are expressly subject 
-// to the terms and conditions of the Altera Program License Subscription 
-// Agreement, Altera MegaCore Function License Agreement, or other applicable 
+// to the terms and conditions of the Intel Program License Subscription 
+// Agreement, Intel MegaCore Function License Agreement, or other applicable 
 // license agreement, including, without limitation, that your use is for the 
-// sole purpose of programming logic devices manufactured by Altera and sold by 
-// Altera or its authorized distributors.  Please refer to the applicable 
+// sole purpose of programming logic devices manufactured by Intel and sold by 
+// Intel or its authorized distributors.  Please refer to the applicable 
 // agreement for further details.
 
 
-// $Id: //acds/rel/16.0/ip/merlin/altera_merlin_demultiplexer/altera_merlin_demultiplexer.sv.terp#1 $
+// $Id: //acds/rel/16.1/ip/merlin/altera_merlin_demultiplexer/altera_merlin_demultiplexer.sv.terp#1 $
 // $Revision: #1 $
-// $Date: 2016/02/08 $
+// $Date: 2016/08/07 $
 // $Author: swbranch $
 
 // -------------------------------------
@@ -30,7 +30,7 @@
 //   output_name:         soc_system_mm_interconnect_0_rsp_demux_001
 //   ST_DATA_W:           129
 //   ST_CHANNEL_W:        7
-//   NUM_OUTPUTS:         3
+//   NUM_OUTPUTS:         5
 //   VALID_WIDTH:         1
 // ------------------------------------------
 
@@ -76,6 +76,20 @@ module soc_system_mm_interconnect_0_rsp_demux_001
     output reg                      src2_endofpacket,
     input                           src2_ready,
 
+    output reg                      src3_valid,
+    output reg [129-1    : 0] src3_data, // ST_DATA_W=129
+    output reg [7-1 : 0] src3_channel, // ST_CHANNEL_W=7
+    output reg                      src3_startofpacket,
+    output reg                      src3_endofpacket,
+    input                           src3_ready,
+
+    output reg                      src4_valid,
+    output reg [129-1    : 0] src4_data, // ST_DATA_W=129
+    output reg [7-1 : 0] src4_channel, // ST_CHANNEL_W=7
+    output reg                      src4_startofpacket,
+    output reg                      src4_endofpacket,
+    input                           src4_ready,
+
 
     // -------------------
     // Clock & Reset
@@ -87,7 +101,7 @@ module soc_system_mm_interconnect_0_rsp_demux_001
 
 );
 
-    localparam NUM_OUTPUTS = 3;
+    localparam NUM_OUTPUTS = 5;
     wire [NUM_OUTPUTS - 1 : 0] ready_vector;
 
     // -------------------
@@ -115,6 +129,20 @@ module soc_system_mm_interconnect_0_rsp_demux_001
 
         src2_valid         = sink_channel[2] && sink_valid;
 
+        src3_data          = sink_data;
+        src3_startofpacket = sink_startofpacket;
+        src3_endofpacket   = sink_endofpacket;
+        src3_channel       = sink_channel >> NUM_OUTPUTS;
+
+        src3_valid         = sink_channel[3] && sink_valid;
+
+        src4_data          = sink_data;
+        src4_startofpacket = sink_startofpacket;
+        src4_endofpacket   = sink_endofpacket;
+        src4_channel       = sink_channel >> NUM_OUTPUTS;
+
+        src4_valid         = sink_channel[4] && sink_valid;
+
     end
 
     // -------------------
@@ -123,8 +151,10 @@ module soc_system_mm_interconnect_0_rsp_demux_001
     assign ready_vector[0] = src0_ready;
     assign ready_vector[1] = src1_ready;
     assign ready_vector[2] = src2_ready;
+    assign ready_vector[3] = src3_ready;
+    assign ready_vector[4] = src4_ready;
 
-    assign sink_ready = |(sink_channel & {{4{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
+    assign sink_ready = |(sink_channel & {{2{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
 
 endmodule
 

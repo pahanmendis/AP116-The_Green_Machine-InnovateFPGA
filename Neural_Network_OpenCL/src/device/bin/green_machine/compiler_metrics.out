@@ -1,0 +1,8 @@
+maxpool2d,target_fmax,200
+maxpool2d,maxpool2d.B1,II,0
+maxpool2d,maxpool2d.B2,II,0
+conv2d3x3,target_fmax,200
+conv2d3x3,conv2d3x3.B1,II,0
+conv2d3x3,conv2d3x3.B2,II,0
+dense,target_fmax,200
+dense,dense.B1,II,0

@@ -1,0 +1,416 @@
+{
+  "columns":
+  ["", "Pipelined", "II", "Bottleneck", "Details"]
+  , "children":
+  [
+    {
+      "name":"Kernel: maxpool2d"
+      , "data":
+      ["", "", ""]
+      , "debug":
+      [
+        [
+          {
+            "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+            , "line":11
+          }
+        ]
+      ]
+      , "details":
+      [
+        {
+          "type":"brief"
+          , "text":"ND-Range"
+        }
+        , {
+          "type":"text"
+          , "text":"ND-Range"
+        }
+        , {
+          "type":"text"
+          , "text":"See %L for more information"
+          , "links":
+          [
+            {
+              "guide":"Best Practices Guide : Kernels"
+              , "link":"https://www.altera.com/documentation/mwh1391807516407.html#ipp1476408832230"
+            }
+          ]
+        }
+      ]
+      , "children":
+      [
+        {
+          "name":"maxpool2d.B1"
+          , "data":
+          ["Yes", "1453624795", "n/a"]
+          , "debug":
+          [
+            [
+              {
+                "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+                , "line":18
+              }
+            ]
+            , [
+              {
+                "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+                , "line":18
+              }
+            ]
+          ]
+          , "details":
+          [
+            {
+              "type":"brief"
+              , "text":"Thread capacity = 168"
+            }
+            , {
+              "type":"text"
+              , "text":"Thread capacity = 168"
+            }
+          ]
+          , "children":
+          [
+            {
+              "name":"Coalesced loop"
+              , "data":
+              ["n/a", "n/a", "n/a"]
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+                    , "line":20
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Auto-coalesced"
+                }
+              ]
+              , "children":
+              [
+              ]
+            }
+            , {
+              "name":"maxpool2d.B2"
+              , "data":
+              ["Yes", ">=3314660295", "n/a"]
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+                    , "line":27
+                  }
+                ]
+                , [
+                  {
+                    "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+                    , "line":27
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Thread capacity = 154"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Thread capacity = 154"
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"Coalesced loop"
+                  , "data":
+                  ["n/a", "n/a", "n/a"]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+                        , "line":30
+                      }
+                    ]
+                  ]
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"Auto-coalesced"
+                    }
+                  ]
+                  , "children":
+                  [
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+    , {
+      "name":"Kernel: conv2d3x3"
+      , "data":
+      ["", "", ""]
+      , "debug":
+      [
+        [
+          {
+            "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+            , "line":214
+          }
+        ]
+      ]
+      , "details":
+      [
+        {
+          "type":"brief"
+          , "text":"ND-Range"
+        }
+        , {
+          "type":"text"
+          , "text":"ND-Range"
+        }
+        , {
+          "type":"text"
+          , "text":"See %L for more information"
+          , "links":
+          [
+            {
+              "guide":"Best Practices Guide : Kernels"
+              , "link":"https://www.altera.com/documentation/mwh1391807516407.html#ipp1476408832230"
+            }
+          ]
+        }
+      ]
+      , "children":
+      [
+        {
+          "name":"conv2d3x3.B1"
+          , "data":
+          ["Yes", "26799232", "n/a"]
+          , "debug":
+          [
+            [
+              {
+                "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+                , "line":225
+              }
+            ]
+            , [
+              {
+                "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+                , "line":225
+              }
+            ]
+            , [
+              {
+                "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+                , "line":250
+              }
+            ]
+            , [
+              {
+                "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+                , "line":251
+              }
+            ]
+          ]
+          , "details":
+          [
+            {
+              "type":"brief"
+              , "text":"Thread capacity = 421"
+            }
+            , {
+              "type":"text"
+              , "text":"Thread capacity = 421"
+            }
+          ]
+          , "children":
+          [
+            {
+              "name":"conv2d3x3.B2"
+              , "data":
+              ["Yes", "4294967295", "n/a"]
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+                    , "line":231
+                  }
+                ]
+                , [
+                  {
+                    "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+                    , "line":231
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Thread capacity = 398"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Thread capacity = 398"
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"Fully unrolled loop"
+                  , "data":
+                  ["n/a", "n/a", "n/a"]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+                        , "line":234
+                      }
+                    ]
+                  ]
+                  , "details":
+                  [
+                    {
+                      "type":"brief"
+                      , "text":"Unrolled by #pragma unroll"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"Unrolled by #pragma unroll"
+                    }
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Fully unrolled loop"
+                      , "data":
+                      ["n/a", "n/a", "n/a"]
+                      , "debug":
+                      [
+                        [
+                          {
+                            "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+                            , "line":237
+                          }
+                        ]
+                      ]
+                      , "details":
+                      [
+                        {
+                          "type":"brief"
+                          , "text":"Auto-unrolled"
+                        }
+                        , {
+                          "type":"text"
+                          , "text":"Auto-unrolled"
+                        }
+                      ]
+                      , "children":
+                      [
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+    , {
+      "name":"Kernel: dense"
+      , "data":
+      ["", "", ""]
+      , "debug":
+      [
+        [
+          {
+            "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+            , "line":264
+          }
+        ]
+      ]
+      , "details":
+      [
+        {
+          "type":"brief"
+          , "text":"ND-Range"
+        }
+        , {
+          "type":"text"
+          , "text":"ND-Range"
+        }
+        , {
+          "type":"text"
+          , "text":"See %L for more information"
+          , "links":
+          [
+            {
+              "guide":"Best Practices Guide : Kernels"
+              , "link":"https://www.altera.com/documentation/mwh1391807516407.html#ipp1476408832230"
+            }
+          ]
+        }
+      ]
+      , "children":
+      [
+        {
+          "name":"dense.B1"
+          , "data":
+          ["Yes", "83627200", "n/a"]
+          , "debug":
+          [
+            [
+              {
+                "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+                , "line":270
+              }
+            ]
+            , [
+              {
+                "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+                , "line":270
+              }
+            ]
+            , [
+              {
+                "filename":"c:/Users/pahan/Downloads/AP116-The_Green_Machine-InnovateFPGA-main/AP116-The_Green_Machine-InnovateFPGA-main/Neural_Network_OpenCL/src/device/green_machine.cl"
+                , "line":273
+              }
+            ]
+          ]
+          , "details":
+          [
+            {
+              "type":"brief"
+              , "text":"Thread capacity = 212"
+            }
+            , {
+              "type":"text"
+              , "text":"Thread capacity = 212"
+            }
+          ]
+          , "children":
+          [
+          ]
+        }
+      ]
+    }
+  ]
+}

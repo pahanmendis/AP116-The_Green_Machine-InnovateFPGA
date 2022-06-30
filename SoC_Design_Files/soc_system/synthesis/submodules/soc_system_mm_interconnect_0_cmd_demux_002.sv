@@ -1,19 +1,19 @@
-// (C) 2001-2016 Altera Corporation. All rights reserved.
-// Your use of Altera Corporation's design tools, logic functions and other 
+// (C) 2001-2016 Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions and other 
 // software and tools, and its AMPP partner logic functions, and any output 
 // files any of the foregoing (including device programming or simulation 
 // files), and any associated documentation or information are expressly subject 
-// to the terms and conditions of the Altera Program License Subscription 
-// Agreement, Altera MegaCore Function License Agreement, or other applicable 
+// to the terms and conditions of the Intel Program License Subscription 
+// Agreement, Intel MegaCore Function License Agreement, or other applicable 
 // license agreement, including, without limitation, that your use is for the 
-// sole purpose of programming logic devices manufactured by Altera and sold by 
-// Altera or its authorized distributors.  Please refer to the applicable 
+// sole purpose of programming logic devices manufactured by Intel and sold by 
+// Intel or its authorized distributors.  Please refer to the applicable 
 // agreement for further details.
 
 
-// $Id: //acds/rel/16.0/ip/merlin/altera_merlin_demultiplexer/altera_merlin_demultiplexer.sv.terp#1 $
+// $Id: //acds/rel/16.1/ip/merlin/altera_merlin_demultiplexer/altera_merlin_demultiplexer.sv.terp#1 $
 // $Revision: #1 $
-// $Date: 2016/02/08 $
+// $Date: 2016/08/07 $
 // $Author: swbranch $
 
 // -------------------------------------
@@ -30,7 +30,7 @@
 //   output_name:         soc_system_mm_interconnect_0_cmd_demux_002
 //   ST_DATA_W:           129
 //   ST_CHANNEL_W:        7
-//   NUM_OUTPUTS:         7
+//   NUM_OUTPUTS:         6
 //   VALID_WIDTH:         7
 // ------------------------------------------
 
@@ -97,13 +97,6 @@ module soc_system_mm_interconnect_0_cmd_demux_002
     output reg                      src5_endofpacket,
     input                           src5_ready,
 
-    output reg                      src6_valid,
-    output reg [129-1    : 0] src6_data, // ST_DATA_W=129
-    output reg [7-1 : 0] src6_channel, // ST_CHANNEL_W=7
-    output reg                      src6_startofpacket,
-    output reg                      src6_endofpacket,
-    input                           src6_ready,
-
 
     // -------------------
     // Clock & Reset
@@ -115,7 +108,7 @@ module soc_system_mm_interconnect_0_cmd_demux_002
 
 );
 
-    localparam NUM_OUTPUTS = 7;
+    localparam NUM_OUTPUTS = 6;
     wire [NUM_OUTPUTS - 1 : 0] ready_vector;
 
     // -------------------
@@ -164,13 +157,6 @@ module soc_system_mm_interconnect_0_cmd_demux_002
 
         src5_valid         = sink_channel[5] && sink_valid[5];
 
-        src6_data          = sink_data;
-        src6_startofpacket = sink_startofpacket;
-        src6_endofpacket   = sink_endofpacket;
-        src6_channel       = sink_channel >> NUM_OUTPUTS;
-
-        src6_valid         = sink_channel[6] && sink_valid[6];
-
     end
 
     // -------------------
@@ -182,9 +168,8 @@ module soc_system_mm_interconnect_0_cmd_demux_002
     assign ready_vector[3] = src3_ready;
     assign ready_vector[4] = src4_ready;
     assign ready_vector[5] = src5_ready;
-    assign ready_vector[6] = src6_ready;
 
-    assign sink_ready = |(sink_channel & ready_vector);
+    assign sink_ready = |(sink_channel & {{1{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
 
 endmodule
 

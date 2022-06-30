@@ -1,0 +1,8 @@
+{"name":"Info","rows":[
+{"name":"Project Name","data":["green_machine"],"classes":["info-table"]},
+{"name":"Target Family, Device, Board","data":["Cyclone V, 5CSXFC6D6F31C8ES, de10_nano:de10_nano_sharedonly"]},
+{"name":"AOC Version","data":["19.1.0 Build 670"]},
+{"name":"Quartus Version","data":["19.1.0 Build 670"]},
+{"name":"Command","data":["aoc green_machine.cl -o bin\\green_machine.aocx -board=de10_nano_sharedonly -v -report"]},
+{"name":"Reports Generated At", "data":["Tue Jun 28 19:34:38 2022"]}
+]}
